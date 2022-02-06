@@ -20,13 +20,25 @@ class PasswordGenerator extends React.Component{
   }
 
   handleClick = () => {
-
+    
   }
 
   render(){
     return (
       <div>
-        <h1>Password Generator</h1>        
+        <h1>Password Generator</h1> 
+        <div id="cb-group"> 
+          <label> 
+            <input type="checkbox" defaultChecked={false}/>
+            include numbers
+          </label>  
+          <br />
+          <label> 
+            <input type="checkbox" defaultChecked={false}/>
+            include special characters
+          </label>  
+          <br />   
+        </div>      
         <button onClick={this.handleClick}>Generate</button>
       </div>
     );
