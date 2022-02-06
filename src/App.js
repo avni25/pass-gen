@@ -7,6 +7,7 @@ let cb_numbers_checked = false;
 const cb_characters = "cb-characters";
 let cb_characters_checked = false;
 
+
 function App() {
   return (
     <div className="App">
@@ -20,8 +21,11 @@ class PasswordGenerator extends React.Component{
     super(props);
     this.state = {
       password: '',
+      length: 8
     }
     this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   generatePassword(){
@@ -42,7 +46,7 @@ class PasswordGenerator extends React.Component{
         arr = arr.concat(characters.split(""));
     }
 
-    for(let i = 0; i < length; i++){
+    for(let i = 0; i < this.state.length; i++){
       password += arr[Math.floor(Math.random() * arr.length)];
     }
     return password;
@@ -50,7 +54,15 @@ class PasswordGenerator extends React.Component{
 
   handleClick = () => {
     this.setState({
-      password: this.generatePassword()
+      password: this.generatePassword(),
+      length: this.state.length
+    });
+  }
+
+  handleInputChange(event) {
+    this.setState({
+      password: this.state.password,
+      length: event.target.value
     });
   }
 
@@ -85,7 +97,8 @@ class PasswordGenerator extends React.Component{
             />
             include special characters
           </label>  
-          <br />   
+          <br /> 
+          <input type="text" id="length" placeholder="length" onChange={(e)=>this.handleInputChange(e)}/>
         </div>      
         <button onClick={this.handleClick}>Generate</button>
         <p>{this.state.password}</p>
