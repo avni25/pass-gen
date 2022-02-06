@@ -28,8 +28,7 @@ class PasswordGenerator extends React.Component{
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  generatePassword(){
-    let length = 8;
+  generatePassword(){   
     let alphabet = "abcdefghijklmnopqrstuvwxyz";
     let alphabet_upper = alphabet.toUpperCase();
     let numbers = "0123456789";
