@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 
+
+
 const cb_numbers = "cb-numbers";
 let cb_numbers_checked = false;
 const cb_characters = "cb-characters";
@@ -99,7 +101,7 @@ class PasswordGenerator extends React.Component{
           <br /> 
           <input type="text" id="length" placeholder="length" onChange={(e)=>this.handleInputChange(e)}/>
         </div>      
-        <button onClick={this.handleClick}>Generate</button>
+        <button class="btn btn-primary" onClick={this.handleClick}>Generate</button>
         <p>{this.state.password}</p>
       </div>
     );
