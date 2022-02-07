@@ -1,6 +1,5 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Password Generator with React
+github pages link: https://avni25.github.io/pass-gen/
 
 ## Available Scripts
 
