@@ -1,6 +1,14 @@
 import React from 'react';
 import { generatePassword } from '../algorithms/pass';
 
+const style_btn = {
+    backgroundColor: '#f44336',
+    color: 'white',
+    font: 'inherit',
+    border: '1px solid blue',
+    borderRadius: '8px',
+};
+
 export class PasswordGenerator extends React.Component{
     constructor(props){
       super(props);
@@ -69,9 +77,13 @@ export class PasswordGenerator extends React.Component{
               include special characters
             </label>  
             <br /> 
+            <br /> 
             <input type="text" id="length" placeholder="length" onChange={(e)=>this.handleInputChange(e)}/>
-          </div>      
-          <button class="btn btn-primary" onClick={this.handleClick}>Generate</button>
+          </div>  
+          <br />     
+          <button 
+            style={style_btn} 
+            onClick={this.handleClick}>Generate</button>
           <p>{this.state.password}</p>
         </div>
       );

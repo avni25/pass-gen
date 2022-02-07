@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+h1 {
+  background-color: rgb(41, 137, 167);
+  color: white;
+}
+
+p{
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(144, 13, 161);
+}
+
+input{
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(144, 13, 161);
+}
