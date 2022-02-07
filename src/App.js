@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-
+import { generatePassword } from './algorithms/pass';
 
 
 function App() {
@@ -27,34 +27,11 @@ class PasswordGenerator extends React.Component{
     this.handleChange = this.handleChange.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
-
-  generatePassword(){   
-    let alphabet = "abcdefghijklmnopqrstuvwxyz";
-    let alphabet_upper = alphabet.toUpperCase();
-    let numbers = "0123456789";
-    let characters = "!@#$%^&*()_+~`|}{[]\:;?><,./-=";
-    let password = "";    
-    let arr = [];
-
-    arr = arr.concat(alphabet.split(""), alphabet_upper.split(""));
-    if(this.state.cb_numbers_checked){
-        arr = arr.concat(numbers.split(""));
-    }
-    
-    if(this.state.cb_characters_checked){
-        arr = arr.concat(characters.split(""));
-    }
-
-    for(let i = 0; i < this.state.length; i++){
-      password += arr[Math.floor(Math.random() * arr.length)];
-    }
-    return password;
-  }
-
-  handleClick = () => {
+  
+  handleClick = () => {    
     this.setState({
       ...this.state,
-      password: this.generatePassword()
+      password: generatePassword(this.state.cb_numbers_checked, this.state.cb_characters_checked, this.state.length)
     });
   }
 
