@@ -4,12 +4,6 @@ import React from 'react';
 
 
 
-const cb_numbers = "cb-numbers";
-let cb_numbers_checked = false;
-const cb_characters = "cb-characters";
-let cb_characters_checked = false;
-
-
 function App() {
   return (
     <div className="App">
@@ -23,7 +17,11 @@ class PasswordGenerator extends React.Component{
     super(props);
     this.state = {
       password: '',
-      length: 8
+      length: 8,
+      cb_numbers: "cb_numbers",
+      cb_characters: "cb_characters",
+      cb_numbers_checked: false,
+      cb_characters_checked: false
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -39,11 +37,11 @@ class PasswordGenerator extends React.Component{
     let arr = [];
 
     arr = arr.concat(alphabet.split(""), alphabet_upper.split(""));
-    if(cb_numbers_checked){
+    if(this.state.cb_numbers_checked){
         arr = arr.concat(numbers.split(""));
     }
     
-    if(cb_characters_checked){
+    if(this.state.cb_characters_checked){
         arr = arr.concat(characters.split(""));
     }
 
@@ -55,14 +53,14 @@ class PasswordGenerator extends React.Component{
 
   handleClick = () => {
     this.setState({
-      password: this.generatePassword(),
-      length: this.state.length
+      ...this.state,
+      password: this.generatePassword()
     });
   }
 
   handleInputChange(event) {
     this.setState({
-      password: this.state.password,
+      ...this.state,
       length: event.target.value
     });
   }
@@ -70,10 +68,16 @@ class PasswordGenerator extends React.Component{
   handleChange = (e) =>{
     let isChecked = e.target.checked;
     let cbName = e.target.name;
-    if(cbName === cb_numbers){
-      cb_numbers_checked = isChecked;
-    }else if(cbName === cb_characters){
-      cb_characters_checked = isChecked;
+    if(cbName === this.state.cb_numbers){
+      this.setState({
+        ...this.state,
+        cb_numbers_checked: isChecked
+      });
+    }else if(cbName === this.state.cb_characters){
+      this.setState({
+        ...this.state,
+        cb_characters_checked: isChecked
+      });
     }
     console.log(isChecked +" "+ cbName);
   }
@@ -84,16 +88,16 @@ class PasswordGenerator extends React.Component{
         <h1>Password Generator</h1> 
         <div id="cb-group"> 
           <label> 
-            <input type="checkbox" name={cb_numbers}
-             defaultChecked={cb_numbers_checked} 
+            <input type="checkbox" name={this.state.cb_numbers}
+             defaultChecked={this.state.cb_numbers_checked} 
              onChange={(e)=>this.handleChange(e)}
              />
             include numbers
           </label>  
           <br />
           <label> 
-            <input type="checkbox" name={cb_characters} 
-            defaultChecked={cb_characters_checked}
+            <input type="checkbox" name={this.state.cb_characters} 
+            defaultChecked={this.state.cb_characters_checked}
             onChange={(e)=>this.handleChange(e)}
             />
             include special characters
