@@ -1,5 +1,9 @@
-# Password Generator with React
-github pages link: https://avni25.github.io/pass-gen/
+* ## Password Generator
+     * link: https://avni25.github.io/pass-gen/     
+     * source code: https://github.com/avni25/pass-gen
+     * ### Keywords: Javascript, React
+     * Info: 
+     
 
 ## Available Scripts
 
